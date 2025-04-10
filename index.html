@@ -58,15 +58,15 @@
     <div class="typetester-nav">
       <div class="typetester-nav-item">
         <label for="weight">Weight</label>
-        <input type="range" id="weight" min="100" max="900" value="400">
+        <input type="range" id="weight" min="100" max="500" value="300">
       </div>
       <div class="typetester-nav-item">
         <label for="slnt">Italic</label>
-        <input type="range" id="slnt" min="-15" max="0" value="0">
+        <input type="range" id="slnt" min="0" max="10" value="0">
       </div>
       <div class="typetester-nav-item">
-        <label for="cntr">Contrast</label>
-        <input type="range" id="cntr" min="0" max="100" value="0">
+        <label for="wdth">Width</label>
+        <input type="range" id="wdth" min="1" max="9" value="5">
       </div>
     </div>
 
@@ -81,19 +81,19 @@
     const sample = document.getElementById("sampleText");
     const weightSlider = document.getElementById("weight");
     const slntSlider = document.getElementById("slnt");
-    const cntrSlider = document.getElementById("cntr");
+    const wdthSlider = document.getElementById("wdth");
 
     function updateFontSettings() {
       const wght = weightSlider.value;
       const slnt = slntSlider.value;
-      const cntr = cntrSlider.value;
+      const wdth = wdthSlider.value;
 
-      sample.style.fontVariationSettings = `"wght" ${wght}, "slnt" ${slnt}, "CNTR" ${cntr}`;
+      sample.style.fontVariationSettings = `"wght" ${wght}, "slnt" ${slnt}, "wdth" ${wdth}`;
     }
 
     weightSlider.addEventListener("input", updateFontSettings);
     slntSlider.addEventListener("input", updateFontSettings);
-    cntrSlider.addEventListener("input", updateFontSettings);
+    wdthSlider.addEventListener("input", updateFontSettings);
 
     updateFontSettings();
   </script>
