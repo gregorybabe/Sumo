@@ -3,78 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Font Character Viewer</title>
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            padding: 2rem;
+            background: #fff;
+            color: #000;
+            max-width: 100vw;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        #character-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0px;
+            text-align: center;
+            width: 100vw;
+        }
+        .char-box {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+        }
+        .char-box span {
+            font-size: 340%;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .char-box:hover span {
+            transform: scale(2);
+        }
+    </style>
 </head>
 <body>
     <h1>Hello, World! okay code is updating. v 3</h1>
-</body>
-</html>
+    <h1>Character Preview</h1>
+    <div id="character-grid"></div>
 
+    <script>
+        // Hello World script
+        console.log("Hello, World! okay code is updating. v 3");
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Font Character Viewer</title>
-  <style>
-    body {
-      font-family: 'Helvetica', sans-serif; 
-      padding: 2rem;
-      background: #fff;
-      color: #000;
-      max-width: 100vw;
-      box-sizing: border-box;
-      margin: 0;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    #character-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0px;
-      text-align: center;
-      width: 100vw;
-    }
-    .char-box {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #eee;
-      box-sizing: border-box;
-    }
-    .char-box span {
-      font-size: 340%;
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-    .char-box:hover span {
-      transform: scale(2);
-    }
-  </style>
-</head>
-<body>
-  <h1>Character Preview</h1>
-  <div id="character-grid"></div>
+        // Character grid script
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:'\",.<>?/`~";
+        const grid = document.getElementById("character-grid");
 
-  <script>
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:'\",.<>?/`~";
-    const grid = document.getElementById("character-grid");
+        characters.split('').forEach(char => {
+            const box = document.createElement("div");
+            box.className = "char-box";
 
-    characters.split('').forEach(char => {
-      const box = document.createElement("div");
-      box.className = "char-box";
+            const span = document.createElement("span");
+            span.textContent = char;
 
-      const span = document.createElement("span");
-      span.textContent = char;
-
-      box.appendChild(span);
-      grid.appendChild(box);
-    });
-  </script>
+            box.appendChild(span);
+            grid.appendChild(box);
+        });
+    </script>
 </body>
 </html>
