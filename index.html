@@ -1,111 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Type Tester</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Variable Font Tester</title>
   <style>
+    @font-face {
+      font-family: 'SumoVariable';
+      src: url('fonts/SumoVariable.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     body {
-      font-family: Sumo Variable, sans-serif;
-      padding: 2rem;
-      margin: 0;
+      font-family: 'SumoVariable', sans-serif;
       background: #fff;
       color: #000;
+      padding: 2rem;
+      margin: 0;
     }
 
     .typetester-container {
-      max-width: 1000px;
-      margin: auto;
+      max-width: 100%;
     }
 
     .typetester-nav {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .typetester-nav-item {
-      flex: 1 1 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .typetester-nav-item label {
-      display: block;
-      font-size: 0.85rem;
-      margin-bottom: 0.25rem;
+    .typetester-nav-item input[type=range] {
+      width: 150px;
     }
 
-    input[type="range"] {
-      width: 100%;
+    .typetester-sample {
+      margin-top: 2rem;
     }
 
     .typetester-sample p {
-      margin: 1rem 0;
+      font-family: 'SumoVariable';
       font-size: 5vmax;
-      font-family: Sumo Variable, sans-serif;
       white-space: initial;
-    }
-
-    .typetester-sample-large p {
-      font-size: 10vmax;
     }
   </style>
 </head>
 <body>
-
   <div class="typetester-container">
     <div class="typetester-nav">
       <div class="typetester-nav-item">
-        <label for="weightRange">Weight</label>
-        <input type="range" id="weightRange" min="100" max="900" step="1" value="400">
+        <label for="weight">Weight</label>
+        <input type="range" id="weight" min="100" max="900" value="400">
       </div>
       <div class="typetester-nav-item">
-        <label for="contrastRange">Contrast</label>
-        <input type="range" id="contrastRange" min="0" max="100" step="1" value="50">
+        <label for="slnt">Italic</label>
+        <input type="range" id="slnt" min="-15" max="0" value="0">
       </div>
       <div class="typetester-nav-item">
-        <label for="slantRange">Slant</label>
-        <input type="range" id="slantRange" min="-15" max="0" step="1" value="0">
+        <label for="cntr">Contrast</label>
+        <input type="range" id="cntr" min="0" max="100" value="0">
       </div>
     </div>
 
     <div class="typetester-sample">
-      <p id="sampleText1" contenteditable="true" spellcheck="false">
-        Contra-Internet Aesthetics!!!
-      </p>
-    </div>
-    <div class="typetester-sample typetester-sample-large">
-      <p id="sampleText2" contenteditable="true" spellcheck="false">
+      <p id="sampleText" contenteditable="true" spellcheck="false">
         Contra-Internet Aesthetics!!!
       </p>
     </div>
   </div>
 
   <script>
-    const weightRange = document.getElementById('weightRange');
-    const contrastRange = document.getElementById('contrastRange');
-    const slantRange = document.getElementById('slantRange');
-    const textSamples = [document.getElementById('sampleText1'), document.getElementById('sampleText2')];
+    const sample = document.getElementById("sampleText");
+    const weightSlider = document.getElementById("weight");
+    const slntSlider = document.getElementById("slnt");
+    const cntrSlider = document.getElementById("cntr");
 
-    function updateFontVariations() {
-      const wght = weightRange.value;
-      const cntr = contrastRange.value;
-      const slnt = slantRange.value;
+    function updateFontSettings() {
+      const wght = weightSlider.value;
+      const slnt = slntSlider.value;
+      const cntr = cntrSlider.value;
 
-      const settings = `"wght" ${wght}, "CNTR" ${cntr}, "slnt" ${slnt}`;
-
-      textSamples.forEach(sample => {
-        sample.style.fontVariationSettings = settings;
-      });
+      sample.style.fontVariationSettings = `"wght" ${wght}, "slnt" ${slnt}, "CNTR" ${cntr}`;
     }
 
-    weightRange.addEventListener('input', updateFontVariations);
-    contrastRange.addEventListener('input', updateFontVariations);
-    slantRange.addEventListener('input', updateFontVariations);
+    weightSlider.addEventListener("input", updateFontSettings);
+    slntSlider.addEventListener("input", updateFontSettings);
+    cntrSlider.addEventListener("input", updateFontSettings);
 
-    // Initialize
-    updateFontVariations();
+    updateFontSettings();
   </script>
-
 </body>
 </html>
