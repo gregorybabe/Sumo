@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'SumoVariable';
-  src: url('fonts/SumoVariableVF.woff2') format('truetype'); /* or .woff2 */
-  font-weight: 100 900;
-  font-style: normal;
+  src: url('SumoVariable.woff2') format('woff2');
+  font-weight: 100 500; /* Set the range */
+  font-style: oblique 0deg 10deg; /* if slant is supported */
+  font-width: 0 9;
   font-display: swap;
 }
-font-family: 'SumoVariable', sans-serif;
