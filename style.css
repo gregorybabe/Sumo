@@ -1,1 +1,8 @@
-
+@font-face {
+  font-family: 'SumoVariable';
+  src: url('fonts/SumoVariableVF.woff2') format('truetype'); /* or .woff2 */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+font-family: 'SumoVariable', sans-serif;
